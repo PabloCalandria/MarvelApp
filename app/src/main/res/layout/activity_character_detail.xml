@@ -1,0 +1,98 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="character"
+            type="com.intermedia.challenge.data.models.Character" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tool_bar_character_detail"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <TextView
+                android:id="@+id/text_character_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:text="@{character.name}"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionMode.Subtitle"
+                android:textColor="@color/white"
+                android:textSize="25sp" />
+
+            <Button
+                android:id="@+id/button_close"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:background="@drawable/ic_close" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+            <ImageView
+                android:id="@+id/thumbnail_character_detail"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                imageThumbnail="@{character.thumbnail}"
+                app:layout_constraintTop_toBottomOf="@id/tool_bar_character_detail"
+                app:layout_constraintDimensionRatio="1"/>
+
+            <TextView
+                android:id="@+id/description_character_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{character.description}"
+                app:layout_constraintTop_toBottomOf="@id/thumbnail_character_detail"
+                tools:text="Using the power of the Infinity Stones, Thanos... believes he can ultimately save the universe by wiping out half of its population."
+                android:layout_margin="20dp"
+                android:textSize="20sp"/>
+
+
+            <LinearLayout
+                android:id="@+id/comics_character_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/description_character_detail">
+
+                <TextView
+                    android:id="@+id/appear_character_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="APPEARS IN THESE COMICS"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:layout_margin="10dp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_character_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    tools:listitem="@layout/view_character_item">
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</layout>
+

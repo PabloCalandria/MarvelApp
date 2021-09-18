@@ -27,7 +27,7 @@ class EventsViewModel(private val eventsRepository: EventsRepository) : ViewMode
         viewModelScope.launch {
             when (val response = eventsRepository.getEvents()) {
                 is NetResult.Success -> {
-                    val today = SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().time)
+                    val today = SimpleDateFormat("dd/M/yyyy hh:mm:ss").format(Date())
 
                     for(item in response.data.eventsList.events){
                         if(item.start != null && item.start >= today && eventList.size<25){

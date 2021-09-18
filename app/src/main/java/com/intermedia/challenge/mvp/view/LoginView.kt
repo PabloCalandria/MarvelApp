@@ -25,6 +25,10 @@ class LoginView(activity: Activity, private val binding: ActivityLoginBinding): 
 
     fun showSuccess() {
         Toast.makeText(context, context?.resources?.getString(R.string.message_account), Toast.LENGTH_SHORT).show()
+        context?.let {
+            startActivity(it, Intent(activity, MainScreenActivity::class.java), null)
+            activity?.finish()
+        }
     }
 
     fun goToMainScreen() {

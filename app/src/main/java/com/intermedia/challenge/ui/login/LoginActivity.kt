@@ -2,6 +2,7 @@ package com.intermedia.challenge.ui.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.facebook.CallbackManager
@@ -37,9 +38,17 @@ class LoginActivity : AppCompatActivity() {
         binding.buttonSignUp.setOnClickListener{
             presenter.createNewAccount()
         }
-        binding.buttonLogin.setOnClickListener{
-            presenter.login()
+
+        binding.buttonLogin.visibility = View.INVISIBLE
+
+        binding.emailLoginEditText.setOnFocusChangeListener { view, b ->
+            change()
         }
+
+        binding.passwordLoginEditText.setOnFocusChangeListener { view, b ->
+            change()
+        }
+
         binding.loginFacebookCardView.setOnClickListener {
             LoginManager.getInstance().logInWithReadPermissions(this, listOf("email"))
             LoginManager.getInstance().registerCallback(callbackManager,
@@ -71,6 +80,17 @@ class LoginActivity : AppCompatActivity() {
                     }
 
                 })
+        }
+    }
+
+    private fun change() {
+        if(binding.emailLoginEditText.text.toString().isNotEmpty() && binding.passwordLoginEditText.text.toString().isNotEmpty()){
+            binding.buttonLogin.visibility = View.VISIBLE
+            binding.buttonLogin.setOnClickListener{
+                presenter.login()
+            }
+        }else {
+            binding.buttonLogin.visibility = View.INVISIBLE
         }
     }
 

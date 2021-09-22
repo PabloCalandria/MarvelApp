@@ -1,8 +1,10 @@
 package com.intermedia.challenge.ui.login
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.facebook.CallbackManager
@@ -39,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
             presenter.createNewAccount()
         }
 
-        binding.buttonLogin.visibility = View.INVISIBLE
+        binding.buttonLogin.isEnabled = false
 
         binding.emailLoginEditText.setOnFocusChangeListener { view, b ->
             change()
@@ -85,12 +87,12 @@ class LoginActivity : AppCompatActivity() {
 
     private fun change() {
         if(binding.emailLoginEditText.text.toString().isNotEmpty() && binding.passwordLoginEditText.text.toString().isNotEmpty()){
-            binding.buttonLogin.visibility = View.VISIBLE
+            binding.buttonLogin.isEnabled = true
             binding.buttonLogin.setOnClickListener{
                 presenter.login()
             }
         }else {
-            binding.buttonLogin.visibility = View.INVISIBLE
+            binding.buttonLogin.isEnabled = false
         }
     }
 

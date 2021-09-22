@@ -5,6 +5,7 @@
     <string name="message_fail">La cuenta ya fue creada</string>
     <string name="message_account">Se creo la cuenta con exito</string>
     <string name="title_events">Eventos</string>
+    <string name="lOGIN">lOGIN</string>
     <string name="facebook_app_id">1155760174830453</string>
     <string name="fb_login_protocol_scheme">fb1155760174830453</string>
 

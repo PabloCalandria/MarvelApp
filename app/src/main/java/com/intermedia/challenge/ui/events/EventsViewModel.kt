@@ -30,7 +30,7 @@ class EventsViewModel(private val eventsRepository: EventsRepository) : ViewMode
                     val today = SimpleDateFormat("dd/M/yyyy hh:mm:ss").format(Date())
 
                     for(item in response.data.eventsList.events){
-                        if(item.start != null && item.start >= today && eventList.size<25){
+                        if(item.start != null && item.start <= today && eventList.size<25){
                             eventList.add(item)
                         }
                     }
